@@ -1,0 +1,23 @@
+sequenceDiagram
+    participant M as Main
+    participant G as Game
+    participant B as Board
+    participant P1 as Player1
+    participant P2 as Player2
+    participant A as AI
+
+    M->>G: start_game()
+    G->>B: __init__(size)
+    G->>P1: __init__(symbol)
+    G->>P2: __init__(symbol)
+    G->>A: __init__(symbol)
+    G->>M: get_current_state()
+    M->>G: make_move(row, col)
+    G->>B: set_cell(row, col, symbol)
+    G->>B: is_full()
+    G->>B: is_winner(symbol)
+    G->>A: get_best_move(board)
+    G->>M: get_current_state()
+    G->>M: get_winner()
+    G->>M: get_current_player()
+    G->>M: restart_game()

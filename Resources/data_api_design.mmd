@@ -1,0 +1,34 @@
+classDiagram
+    class Game{
+        +start_game()
+        +restart_game()
+        +get_current_state() : str
+        +get_winner() : Optional[str]
+        +get_current_player() : str
+        +make_move(row: int, col: int) : bool
+    }
+
+    class Board{
+        +__init__(size: int)
+        +get_size() : int
+        +get_cell(row: int, col: int) : Optional[str]
+        +set_cell(row: int, col: int, symbol: str) : bool
+        +is_full() : bool
+        +is_winner(symbol: str) : bool
+    }
+
+    class Player{
+        +__init__(symbol: str)
+        +get_symbol() : str
+    }
+
+    class AI{
+        +__init__(symbol: str)
+        +get_symbol() : str
+        +get_best_move(board: Board) : Tuple[int, int]
+    }
+
+    Game "1" -- "1" Board: has
+    Game "1" -- "2" Player: has
+    Game "1" -- "2" AI: has
+    Board "1" -- "many" Cell: contains
